@@ -1,0 +1,49 @@
+бинарный поиск
+
+// BEGIN (write your solution here)
+const findNumberByName = (phonebook, name) => {
+
+let phoneBookLength = phonebook.length;
+if(phoneBookLength === 0) {
+  return null;
+}
+let index = Math.trunc(phoneBookLength / 2);
+const value = phonebook[index];
+if(value.name === name) {
+  return value.number;
+}
+if(index === 0) {
+  return null;
+}
+if(value.name > name) {
+  return findNumberByName(phonebook.slice(0, index), name);
+}
+if(value.name < name) {
+  return findNumberByName(phonebook.slice(index), name);
+}
+
+
+
+сортирова 
+
+const quickSort = (items, direction = 'asc') => {
+  const hold = items[Math.trunc(items.length / 2)];
+  const smaller = [];
+  const higher = [];
+  const equal = [];
+
+  items.forEach((item) => {
+    if (item > hold) {
+      higher.push(item);
+    }
+    if (item < hold) {
+      smaller.push(item);
+    }
+
+    if (item === hold) {
+      equal.push(item);
+    }
+  });
+
+  const first = smaller.length > 1 ? quickSort(smaller, direction) : smaller;
+  const second = higher.length > 1 ? quickSort(higher, d
